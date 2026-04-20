@@ -46,7 +46,7 @@ export function Contact() {
           <div className="space-y-8">
             <div className="space-y-4">
               {[
-                { icon: Mail, label: 'Drop an email', value: 'gourav@example.com', href: 'mailto:gourav@example.com' },
+                { icon: Mail, label: 'Drop an email', value: 'gourav.tanwar2024@nst.rishihood.edu.in', href: 'mailto:gourav.tanwar2024@nst.rishihood.edu.in' },
                 { icon: MessageSquare, label: 'Active on GitHub', value: '@g-tanwar', href: 'https://github.com/g-tanwar' },
                 { icon: MapPin, label: 'Based in', value: 'India', href: null },
               ].map((item, index) => (

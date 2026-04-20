@@ -2,6 +2,7 @@ import { Section } from '../components/Section';
 import { ArrowRight, Terminal, Code2, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import heroImg from '../assets/hero.png';
 
 const ROLES = [
   "B.Tech 2nd Year Student",
@@ -170,7 +171,17 @@ export function Home() {
             <div className="relative glass-card rounded-[3rem] p-4 aspect-[4/5] flex flex-col justify-between overflow-hidden border-white/10 group-hover:border-white/20 transition-colors shadow-inner">
                <div className="w-full h-full rounded-[2.5rem] bg-gray-900 overflow-hidden relative border border-white/5">
                   <div className="absolute inset-0 bg-blue-600/5 mix-blend-overlay"></div>
-                  {/* Pseudo Profile Image / Abstract Shape */}
+                  {/* Avatar / Profile Image */}
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <motion.img 
+                      src={heroImg}
+                      alt="Gourav Tanwar"
+                      animate={{ y: [-10, 10, -10] }}
+                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                      className="w-[90%] max-w-[300px] object-contain drop-shadow-2xl"
+                    />
+                  </div>
+                  {/* Abstract Shape Background */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <motion.div 
                       animate={{ 
@@ -184,7 +195,7 @@ export function Home() {
                   
                   <div className="absolute bottom-8 left-8 right-8 space-y-4">
                      <div className="flex gap-2">
-                        {['TypeScript', 'Tailwind', 'Node'].map(t => (
+                        {['JavaScript', 'React', 'Node'].map(t => (
                           <span key={t} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] text-gray-400 font-bold uppercase tracking-widest">{t}</span>
                         ))}
                      </div>
