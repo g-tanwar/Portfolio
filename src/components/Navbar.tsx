@@ -79,13 +79,13 @@ export function Navbar() {
             <div className="hidden md:flex items-center space-x-4 border-l border-white/10 ml-4 pl-4">
               <motion.a 
                 whileHover={{ y: -2, color: '#fff' }}
-                href="https://github.com" target="_blank" rel="noreferrer" className="text-gray-400 transition-colors"
+                href="https://github.com/g-tanwar" target="_blank" rel="noreferrer" className="text-gray-400 transition-colors"
               >
                 <Github size={20} />
               </motion.a>
               <motion.a 
                 whileHover={{ y: -2, color: '#fff' }}
-                href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-gray-400 transition-colors"
+                href="https://linkedin.com/in/gourav-tanwar" target="_blank" rel="noreferrer" className="text-gray-400 transition-colors"
               >
                 <Linkedin size={20} />
               </motion.a>
@@ -119,8 +119,8 @@ export function Navbar() {
             </a>
           ))}
           <div className="flex justify-around py-4 border-t border-white/10 mt-2">
-            <a href="#" className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-blue-400"><Github size={24} /></a>
-            <a href="#" className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-blue-400"><Linkedin size={24} /></a>
+            <a href="https://github.com/g-tanwar" target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-blue-400"><Github size={24} /></a>
+            <a href="https://linkedin.com/in/gourav-tanwar" target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-blue-400"><Linkedin size={24} /></a>
             <a href="#" className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-blue-400"><Mail size={24} /></a>
           </div>
         </div>

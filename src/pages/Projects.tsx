@@ -1,10 +1,10 @@
 import { Section } from '../components/Section';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Code2, Globe, Rocket, Layers } from 'lucide-react';
 import { FaGithub as Github } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -15,12 +15,11 @@ const container = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   show: { 
     opacity: 1, 
-    scale: 1, 
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
   }
 };
 
@@ -31,103 +30,135 @@ interface Project {
   github: string;
   live: string;
   image: string;
+  icon: any;
+  gradient: string;
 }
 
 const PROJECTS: Project[] = [
   {
-    title: 'E-commerce Platform',
-    description: 'A full-stack e-commerce solution with Redux state management, Stripe payment integration, and a complete admin dashboard.',
-    tech: ['React', 'Node.js', 'MongoDB', 'Tailwind'],
-    github: '#',
-    live: '#',
-    image: '/project-preview.png',
+    title: 'WeGo',
+    description: 'A community-driven student platform with district-based networking, real-time collaboration, and secure doubt-clearing districts.',
+    tech: ['Next.js', 'TypeScript', 'Socket.IO', 'MongoDB', 'JWT'],
+    github: 'https://github.com/g-tanwar/WeGo',
+    live: 'https://we-go-seven.vercel.app/',
+    image: '/wego.png',
+    icon: Globe,
+    gradient: 'from-blue-600 to-indigo-600',
   },
   {
-    title: 'Real-time Chat App',
-    description: 'A responsive chat application supporting real-time messaging, file sharing, and online status indicators using WebSockets.',
-    tech: ['Next.js', 'Socket.io', 'PostgreSQL', 'Prisma'],
-    github: '#',
-    live: '#',
-    image: '/project-preview.png',
+    title: 'Animated Website',
+    description: 'A visually stunning cosmic-themed website featuring high-performance animations, parallax effects, and smooth scroll interactions.',
+    tech: ['GSAP', 'HTML', 'CSS', 'JavaScript', 'FontAwesome'],
+    github: 'https://github.com/g-tanwar/Creative-1',
+    live: 'https://statuesque-rugelach-89550f.netlify.app/',
+    image: '/cosmos.png',
+    icon: Rocket,
+    gradient: 'from-purple-500 to-blue-600',
   },
   {
-    title: 'Task Management System',
-    description: 'A Kanban-style task manager allowing users to organize workflows. Includes drag-and-drop functionality and team collaboration.',
-    tech: ['Vue.js', 'Firebase', 'Vuex', 'SCSS'],
-    github: '#',
-    live: '#',
-    image: '/project-preview.png',
+    title: 'EduPortal',
+    description: 'Comprehensive management system featuring automated attendance, fee tracking, and academic performance monitoring with REST APIs.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+    github: 'https://github.com/g-tanwar/student_managment_system',
+    live: 'https://student-managment-system-eta-self.vercel.app/',
+    image: '/eduportal.png',
+    icon: Layers,
+    gradient: 'from-cyan-500 to-blue-500',
+  },
+  {
+    title: 'Threadly',
+    description: 'High-performance chat infrastructure with dedicated channels, persistent messaging, and relational data management.',
+    tech: ['Nest.js', 'Socket.IO', 'PostgreSQL', 'Sequelize', 'Redux'],
+    github: 'https://github.com/g-tanwar/Chatu',
+    live: 'https://chatu-eight.vercel.app/',
+    image: '/threadly.png',
+    icon: Code2,
+    gradient: 'from-indigo-600 to-blue-500',
   }
 ];
 
 export function Projects() {
   return (
-    <Section id="projects" title="Featured Work">
+    <Section id="projects" title="Showcase">
       <motion.div 
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        viewport={{ once: true, margin: "-100px" }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-10"
       >
         {PROJECTS.map((project, index) => (
           <motion.div 
             key={index} 
             variants={itemVariants}
-            whileHover={{ y: -10 }}
-            className="glass-card rounded-3xl overflow-hidden flex flex-col group transition-all duration-500"
+            className="group relative"
           >
-            <div className="relative h-64 overflow-hidden">
-              <div className="absolute inset-0 bg-blue-600/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
-              />
-              <motion.div 
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                className="absolute inset-0 flex items-center justify-center z-20 bg-black/40 backdrop-blur-sm transition-opacity duration-500"
-              >
-                 <div className="flex space-x-4">
+            <div className="absolute -inset-1 bg-gradient-to-r from-white/10 to-transparent rounded-[2.5rem] blur opacity-15 group-hover:opacity-30 transition duration-500"></div>
+            <div className="relative glass-card rounded-[2.5rem] overflow-hidden flex flex-col border-white/5 group-hover:border-white/10 transition-colors duration-500">
+              {/* Image Container */}
+              <div className="relative h-64 sm:h-80 overflow-hidden">
+                <div className="absolute inset-0 bg-gray-900/60 group-hover:bg-gray-900/40 transition-colors duration-500 z-10"></div>
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+                
+                {/* Floating Badge */}
+                <div className={`absolute top-6 left-6 px-4 py-2 rounded-2xl bg-gradient-to-br ${project.gradient} text-white font-bold text-xs uppercase tracking-widest z-20 shadow-xl flex items-center gap-2`}>
+                  <project.icon size={14} />
+                  {project.title}
+                </div>
+
+                {/* Overlay Links */}
+                <div className="absolute inset-0 flex items-center justify-center translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-20">
+                  <div className="flex gap-4">
                     <motion.a 
-                      whileHover={{ scale: 1.1 }}
+                      whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.2)' }}
                       whileTap={{ scale: 0.9 }}
                       href={project.github} 
-                      className="p-3 rounded-full bg-white/10 hover:bg-blue-600 text-white transition-all transform"
+                      className="p-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white shadow-2xl"
                     >
-                      <Github size={20} />
+                      <Github size={24} />
                     </motion.a>
                     <motion.a 
-                      whileHover={{ scale: 1.1 }}
+                      whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.2)' }}
                       whileTap={{ scale: 0.9 }}
                       href={project.live} 
-                      className="p-3 rounded-full bg-white/10 hover:bg-blue-600 text-white transition-all transform"
+                      className="p-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white shadow-2xl"
                     >
-                      <ExternalLink size={20} />
+                      <Globe size={24} />
                     </motion.a>
-                 </div>
-              </motion.div>
-            </div>
-            
-            <div className="p-8 flex flex-col flex-1">
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
-                {project.title}
-              </h3>
+                  </div>
+                </div>
+              </div>
               
-              <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tech.map((tech: string, i: number) => (
-                  <span 
-                    key={i} 
-                    className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-400 bg-blue-400/5 border border-blue-400/10 rounded-lg"
-                  >
-                    {tech}
-                  </span>
-                ))}
+              {/* Content Container */}
+              <div className="p-10 flex flex-col flex-1">
+                <div className="flex justify-between items-start mb-6">
+                  <h3 className="text-3xl font-black text-white tracking-tight leading-none group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <div className="flex gap-2">
+                    <a href={project.github} className="text-gray-500 hover:text-white transition-colors"><Github size={18} /></a>
+                    <a href={project.live} className="text-gray-500 hover:text-white transition-colors"><ExternalLink size={18} /></a>
+                  </div>
+                </div>
+                
+                <p className="text-gray-400 text-lg leading-relaxed mb-8 flex-1 font-light">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
+                  {project.tech.map((tech, i) => (
+                    <span 
+                      key={i} 
+                      className="px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-blue-400 bg-blue-400/5 rounded-xl border border-blue-400/10"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
